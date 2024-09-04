@@ -1,9 +1,9 @@
 // Оголошую змінні і надаю їм певного значення
-let stringExamle = "Hello World!";
-let numberExample = 42;
-let isBoolean = true;
-let nullType = null;
-let underfinedType;
+const stringExamle = "Hello World!";
+const numberExample = 42;
+const isBoolean = true;
+const nullType = null;
+const underfinedType;
 
 // Виводжу всі значення в консоль
 
