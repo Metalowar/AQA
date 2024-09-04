@@ -1,0 +1,16 @@
+{
+  "name": "education",
+  "version": "1.0.0",
+  "main": "some_code.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "task1": "node jsBasics/task1.js",
+    "task2": "node jsBasics/task2.js",
+    "task3": "node jsBasics/task3.js",
+    "task4": "node jsBasics/task4.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
