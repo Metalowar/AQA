@@ -1,13 +1,13 @@
-// Прибрав return з блоків коду, оскільки IDE сварилася на це. В мене вони заміняються на console.log
+// Переробив на return
 
 function checkOrder (available, ordered) {
     if (ordered > available) {
-        console.log("Your order is too large, we don’t have enough goods.");
-    } else if (ordered === 0) {
-        console.log("Your order is empty");
-    } else {
-        console.log("Your order is accepted");
+        return "Your order is too large, we don’t have enough goods.";
     }
+    if (ordered === 0) {
+        return "Your order is empty";
+    }
+    return "Your order is accepted";
 }
 
-checkOrder(100, 99);
+console.log(checkOrder(1, 2));
