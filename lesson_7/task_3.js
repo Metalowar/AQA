@@ -10,44 +10,28 @@ function divide (numerator, denominator) {
     return numerator / denominator;
 }
 
-// Кейс 1. число / стрінг
-try {
-    const result = divide(5, "test_string");
-    console.log(result);
-} catch (error) {
-    console.error("Error:", error.message);
-} finally {
-    console.log("Work is done!");
+// Функція для кейсів
+function tryCatchFinally (numerator, denominator) {
+    try {
+        const result = divide(numerator, denominator);
+        console.log(result);
+    } catch (error) {
+        console.error("Error:", error.message);
+    } finally {
+        console.log("Work is done!");
+    }
 }
+
+// Кейс 1. число / стрінг
+tryCatchFinally(3, "test string");
 
 // Кейс 2. число / число
-try {
-    const result = divide(5, 5);
-    console.log(result);
-} catch (error) {
-    console.error("Error:", error.message);
-} finally {
-    console.log("Work is done!");
-}
+tryCatchFinally(3, 5);
 
 // Кейс 3. число / нуль
-try {
-    const result = divide(23, 0);
-    console.log(result);
-} catch (error) {
-    console.error("Error:", error.message);
-} finally {
-    console.log("Work is done!");
-}
+tryCatchFinally(23, 0);
 
 // Кейс 4. стрінг / нуль
-try {
-    const result = divide("two errors", 0);
-    console.log(result);
-} catch (error) {
-    console.error("Error:", error.message);
-} finally {
-    console.log("Work is done!");
-}
+tryCatchFinally('Aaaa', 0);
 
 
