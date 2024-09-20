@@ -1,3 +1,4 @@
+// Сортування через if..else для кількості парних/непарних/нульових значень
 const numbers = [2, -5, 0, 7, -3, 0, 10, -8];
 let positiveCount = 0;
 let negativeCount = 0;
