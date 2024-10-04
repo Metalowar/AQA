@@ -4,26 +4,23 @@ import { Book } from './book.js';
 export class Ebook extends Book {
     constructor(title, author, year, type) {
         super(title, author, year);
-        this.type = type;
+        this._type = type;
+    }
+
+    get type() {
+        return this._type;
+    }
+
+    set type(newFormat) {
+        const validFormats = ["epub", "pdf", "fb2", "txt"];
+        if (!validFormats.includes(newFormat.toLowerCase())) {
+            throw new Error("Invalid format. Allowed formats are: epub, pdf, fb2, txt");
+        }
+        this._type = newFormat;
     }
 
     printInfo() {
         const parentInfo = super.printInfo();
-        return `${parentInfo}, Format: ${this.type}`;
+        return `${parentInfo}, Format: ${this._type}`;
     }
-
-    get isOld () {
-        if (this.year > 1960) {
-            return "Its a classic book, but not old"
-        }
-        return "This book old, but actual even now"
-    }
-
-    set typeToUpper (typeEbook) {
-        if (typeof titleBook !== "string") {
-            throw new Error("Title should be strings");
-        }
-        this.title = this.title.toUpperCase();
-    }
-
 }
