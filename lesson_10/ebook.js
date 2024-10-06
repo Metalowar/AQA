@@ -19,6 +19,10 @@ export class Ebook extends Book {
         this._type = newFormat;
     }
 
+    static classInstance (bookInstance, type) {
+        return new Ebook(bookInstance.title, bookInstance.author, bookInstance.year, type);
+    }
+
     printInfo() {
         const parentInfo = super.printInfo();
         return `${parentInfo}, Format: ${this._type}`;
