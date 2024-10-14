@@ -2,6 +2,7 @@
   "name": "education",
   "version": "1.0.0",
   "main": "some_code.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "task1": "node lesson_4/jsBasics/task1.js",

@@ -14,7 +14,7 @@ export class Ebook extends Book {
     set type(newFormat) {
         const validFormats = ["epub", "pdf", "fb2", "txt"];
         if (!validFormats.includes(newFormat.toLowerCase())) {
-            throw new Error("Invalid format. Allowed formats are: epub, pdf, fb2, txt");
+            throw new Error(`Invalid format. Allowed formats are: ${validFormats.join(', ')`);
         }
         this._type = newFormat;
     }
