@@ -19,4 +19,3 @@ switch (true) {
   default:
     console.log("Некоректна оцінка");
 }
-

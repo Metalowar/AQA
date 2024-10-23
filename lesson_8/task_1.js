@@ -17,4 +17,5 @@ for (let i = 0; i < numbers.length; i++) {
 console.log(
   `Кількість позитивних чисел: ${positiveCount} 
 Кількість негативних чисел: ${negativeCount} 
-Кількість нульових чисел: ${zeroCount}`);
+Кількість нульових чисел: ${zeroCount}`
+);

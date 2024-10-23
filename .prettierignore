@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
 .idea/
+eslint.config.js
+.prettierrc
 
 # Rest
 test.js

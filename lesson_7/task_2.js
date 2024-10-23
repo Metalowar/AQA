@@ -1,5 +1,5 @@
 // Рекурсивна функція. Ітерує число від n до 0
-function recursion (num) {
+function recursion(num) {
   console.log(num);
   if (num <= 0) {
     return;

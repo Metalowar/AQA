@@ -1,6 +1,6 @@
 // Переробив на return
 
-function checkOrder (available, ordered) {
+function checkOrder(available, ordered) {
   if (ordered > available) {
     return "Your order is too large, we don’t have enough goods.";
   }

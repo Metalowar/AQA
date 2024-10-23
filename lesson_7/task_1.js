@@ -1,6 +1,6 @@
 // Функція з колбеком
 
-function handleNum (num) {
+function handleNum(num) {
   if (num % 2 === 0) {
     return handleEven();
   } else {
@@ -8,10 +8,10 @@ function handleNum (num) {
   }
 }
 
-function handleEven () {
+function handleEven() {
   console.log("Number is even");
 }
-function handleOdd () {
+function handleOdd() {
   console.log("Number is odd");
 }
 

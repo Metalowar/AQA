@@ -1,6 +1,6 @@
 // Сама функція, яка описує поведінку, як діяти у всіх випадках при діленні
 
-function divide (numerator, denominator) {
+function divide(numerator, denominator) {
   if (denominator === 0) {
     throw new Error("Divide imposible, denominator is zero");
   }
@@ -11,7 +11,7 @@ function divide (numerator, denominator) {
 }
 
 // Функція для кейсів
-function tryCatchFinally (numerator, denominator) {
+function tryCatchFinally(numerator, denominator) {
   try {
     const result = divide(numerator, denominator);
     console.log(result);
@@ -32,6 +32,4 @@ tryCatchFinally(3, 5);
 tryCatchFinally(23, 0);
 
 // Кейс 4. стрінг / нуль
-tryCatchFinally('Aaaa', 0);
-
-
+tryCatchFinally("Aaaa", 0);

@@ -46,8 +46,7 @@ export class Book {
     return `"${this._title}" wrote by ${this._author} in ${this._year}`;
   }
 
-  static theOldestBook (books) {
-    return books.reduce((oldest, current) => current.year < oldest.year ? current : oldest);
+  static theOldestBook(books) {
+    return books.reduce((oldest, current) => (current.year < oldest.year ? current : oldest));
   }
-
 }

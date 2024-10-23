@@ -1,29 +1,29 @@
 {
-	"name": "education",
-	"version": "1.0.0",
-	"main": "some_code.js",
-	"type": "module",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"pret-write": "npx prettier . --write",
-		"pret-check": "npx prettier . --check",
-		"prepare": "husky install",
-		"lint-fix": "npx eslint --fix",
-		"lint-check": "npx eslint"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"description": "",
-	"devDependencies": {
-		"@babel/cli": "^7.25.9",
-		"@babel/core": "^7.25.9",
-		"@babel/eslint-parser": "^7.25.9",
-		"@eslint/js": "^9.13.0",
-		"@stylistic/eslint-plugin-js": "^2.9.0",
-		"eslint": "^9.13.0",
-		"globals": "^15.11.0",
-		"husky": "^8.0.0",
-		"prettier": "3.3.3"
-	}
+  "name": "education",
+  "version": "1.0.0",
+  "main": "some_code.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pret-write": "npx prettier . --write",
+    "pret-check": "npx prettier . --check",
+    "prepare": "husky install",
+    "lint-fix": "npx eslint --fix",
+    "lint-check": "npx eslint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/cli": "^7.25.9",
+    "@babel/core": "^7.25.9",
+    "@babel/eslint-parser": "^7.25.9",
+    "@eslint/js": "^9.13.0",
+    "@stylistic/eslint-plugin-js": "^2.9.0",
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0",
+    "husky": "^8.0.0",
+    "prettier": "3.3.3"
+  }
 }

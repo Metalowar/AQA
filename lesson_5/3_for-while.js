@@ -8,7 +8,7 @@ for (let i = 1; i <= 10; i++) {
 
 // Таблиця множення за допомогою циклу while
 
-const otherNumber= 8;
+const otherNumber = 8;
 let i = 1;
 while (i <= 10) {
   console.log(`${otherNumber} * ${i} = ${otherNumber * i}`);

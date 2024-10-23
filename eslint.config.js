@@ -38,7 +38,7 @@ export default [
     },
   },
   {
-    files: ["**/*.mjs", "lesson_10/**"],
+    files: ["**/*.mjs"],
     rules: {
       "indent": "off",
 
