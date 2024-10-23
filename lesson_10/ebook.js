@@ -25,6 +25,6 @@ export class Ebook extends Book {
 
     printInfo() {
         const parentInfo = super.printInfo();
-        return `${parentInfo}, Format: ${this._type}`;
+        return `${parentInfo}, Format: ${this._type}`; // Перероблю, щоб проходив лінтер (проблема з парсингом)
     }
 }

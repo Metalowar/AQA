@@ -29,7 +29,7 @@ console.log(ebook3.printInfo());
 
 // Повертаю статичним методом найстарішу книгу (4)
 console.log(
-    Book.theOldestBook([book1, book2, book3, ebook1, ebook2, ebook3]).printInfo()
+  Book.theOldestBook([book1, book2, book3, ebook1, ebook2, ebook3]).printInfo()
 );
 
 // Статичний метод створює новий Ebook но основі Book (5)

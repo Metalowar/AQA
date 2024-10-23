@@ -5,9 +5,9 @@ student.firstname = "James";
 student.lastName = "Hetfild";
 student.age = 20;
 student.courses = [
-    "Математика",
-    "Історія",
-    "Програмування"
+  "Математика",
+  "Історія",
+  "Програмування"
 ];
 
 console.log(student);
