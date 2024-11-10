@@ -40,7 +40,7 @@ const config = {
   // ],
 
   // Indicates which provider should be used to instrument code for coverage
-   coverageProvider: "v8",
+  coverageProvider: "v8",
 
   // A list of reporter names that Jest uses when writing coverage reports
   // coverageReporters: [
@@ -85,16 +85,16 @@ const config = {
   // ],
 
   // An array of file extensions your modules use
-   moduleFileExtensions: [
-     "js",
-     "mjs"
+  moduleFileExtensions: [
+    "js",
+    "mjs"
   //   "cjs",
   //   "jsx",
   //   "ts",
   //   "tsx",
   //   "json",
   //   "node"
-   ],
+  ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
@@ -162,10 +162,10 @@ const config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-   testMatch: [
-     "**/lesson_13-14/**/*.tests.js",
+  testMatch: [
+    "**/lesson_13-14/**/*.tests.js",
   //   "**/?(*.)+(spec|test).[tj]s?(x)"
-   ],
+  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [
@@ -194,7 +194,7 @@ const config = {
   // unmockedModulePathPatterns: undefined,
 
   // Indicates whether each individual test should be reported during the run
-   verbose: true,
+  verbose: true,
 
   // An array of regexp patterns that are matched against all source file paths before re-running tests in watch mode
   // watchPathIgnorePatterns: [],
