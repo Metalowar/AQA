@@ -45,6 +45,6 @@ export default [
     }
   },
   {
-    ignores: ["lesson_10/**", "jest.config.js"]
+    ignores: ["lesson_10/**", "cypress/**", "cypress.config.js"]
   }
 ];
