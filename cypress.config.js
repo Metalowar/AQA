@@ -10,6 +10,7 @@ export default defineConfig({
     defaultCommandTimeout: 20000,
     requestTimeout: 10000,
     cacheAcrossSpecs: true,
-    experimentalSessionAndOrigin: true
+    experimentalSessionAndOrigin: true,
+    specPattern: 'cypress/e2e/cy-tests/**/*.cy.{js,jsx,ts,tsx}'
   },
 });
