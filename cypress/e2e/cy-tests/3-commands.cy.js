@@ -1,8 +1,8 @@
 var randomEmail = require('random-email');
 
-describe('Registration & LogIn', () => {
+describe('Validation all Registration filds', () => {
 
-  before(() => {
+  beforeEach(() => {
     cy.visit('https://qauto.forstudy.space/', {
       auth: {
         username: 'guest',
@@ -14,13 +14,53 @@ describe('Registration & LogIn', () => {
     cy.get('div[class="modal-content"]').should('be.visible');
   });
 
+  it('Button Register', () => {
+    // Перевірка пустої форми
+    cy.invalidSubmit();
+
+    // Перевірка чи кожне поле впливає на відправку форми
+    // Заповнюю кожне поле валідними даними і по одному роблю їх некоретними
+    // Кнопка не має бути активною, якщо всі поля правильні, але є одне некоректне
+
+    // Name
+    cy.get('input[id="signupName"]').clear().type('aaa bbb') // invalid
+    cy.get('input[id="signupLastName"]').clear().type('qqqqqwwweeerrrtttyyy')
+    cy.get('input[id="signupEmail"]').type(randomEmail({ domain: 'markin.com' }))
+    cy.get('input[id="signupPassword"]').clear().type('333qweRty333zzz')
+    cy.get('input[id="signupPassword"]').clear().type('333qweRty333zzz')
+    cy.invalidSubmit();
+
+    // Last Name
+    cy.get('input[id="signupName"]').clear().type('qw');
+    cy.get(`input[id="signupLastName"]`).clear().type('aaa+bbb');
+    cy.invalidSubmit();
+
+    // Email
+    cy.get('input[id="signupLastName"]').clear().type('qqqqqwwweeerrrtttyyy');
+    cy.get(`input[id="signupEmail"]`).clear().type('aaa');
+    cy.invalidSubmit();
+
+    // Password
+    cy.get('input[id="signupEmail"]').type(randomEmail({ domain: 'markin.com' }))
+    cy.get(`input[id="signupPassword"]`).clear().type('qwertyu');
+    cy.invalidSubmit();
+
+    // Password 2
+    cy.get('input[id="signupPassword"]').clear().type('333qweRty333zzz')
+    cy.get(`input[id="signupRepeatPassword"]`).clear().type('qwertyu');
+    cy.invalidSubmit();
+
+    // Перевірка чи форма валідна при всіх правильних даних
+    cy.get('input[id="signupRepeatPassword"]').clear().type('333qweRty333zzz')
+    cy.get('div[class="modal-footer"]')
+      .find('button[class*="btn-primary"]')
+      .should('not.have.attr', 'disabled')
+  });
+
   it('Field "Name" ', () => {
 
     // Перевіка на те, що поле обов'язкове, без введення тексту
-    cy.get(`input[id="signupName"]`).focus().blur();
-    cy.get('div[class="invalid-feedback"]')
-      .should('be.visible')
-      .and('have.text', 'Name required');
+    cy.checkIsEmpty("signupName", 'Name required');
 
 
     // Перевірка на некоректність введення (кирилиця, числа, знаки, пробіли)
@@ -48,10 +88,7 @@ describe('Registration & LogIn', () => {
   it('Field "Last Name" ', () => {
 
     // Перевіка на те, що поле обов'язкове, без введення тексту
-    cy.get(`input[id="signupLastName"]`).focus().blur();
-    cy.get('div[class="invalid-feedback"]')
-      .should('be.visible')
-      .and('have.text', 'Last name required');
+    cy.checkIsEmpty("signupLastName", 'Last name required');
 
 
     // Перевірка на некоректність введення (кирилиця, числа, знаки, пробіли)
@@ -78,12 +115,8 @@ describe('Registration & LogIn', () => {
 
   it('Field "Email"', () => {
 
-    //cy.get('input[id="signupEmail"]').type(randomEmail({ domain: 'markin.com' }))
     // Перевіка на те, що поле обов'язкове, без введення тексту
-    cy.get(`input[id="signupEmail"]`).focus().blur();
-    cy.get('div[class="invalid-feedback"]')
-      .should('be.visible')
-      .and('have.text', 'Email required');
+    cy.checkIsEmpty("signupEmail", 'Email required');
 
     // Перевірка на некоректність введення (паттерн, знаки, пробіли)
     cy.checkIsInvalid("signupEmail", "aaa", "Email is incorrect");
@@ -102,15 +135,12 @@ describe('Registration & LogIn', () => {
     cy.get('div[class="invalid-feedback"]').should('not.exist');
   });
 
-  it('Password" ', () => {
+  it('Password', () => {
 
     const invalidPassword = "Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter";
 
     // Перевіка на те, що поле обов'язкове, без введення тексту
-    cy.get(`input[id="signupPassword"]`).focus().blur();
-    cy.get('div[class="invalid-feedback"]')
-      .should('be.visible')
-      .and('have.text', 'Password required');
+    cy.checkIsEmpty("signupPassword", 'Password required');
 
 
     // Перевірка на довжину поля і паттерн (вел/мал буква, число)
@@ -131,15 +161,12 @@ describe('Registration & LogIn', () => {
     cy.get('div[class="invalid-feedback"]').should('not.exist');
   });
 
-  it.only('Re-enter password" ', () => {
+  it('Re-enter password', () => {
 
     const invalidPassword = "Password has to be from 8 to 15 characters long and contain at least one integer, one capital, and one small letter";
 
     // Перевіка на те, що поле обов'язкове, без введення тексту
-    cy.get(`input[id="signupRepeatPassword"]`).focus().blur();
-    cy.get('div[class="invalid-feedback"]')
-      .should('be.visible')
-      .and('have.text', 'Re-enter password required');
+    cy.checkIsEmpty("signupRepeatPassword", 'Re-enter password required');
 
 
     // Перевірка на відповідність
@@ -149,7 +176,78 @@ describe('Registration & LogIn', () => {
     cy.checkIsInvalid("signupRepeatPassword", "qweRty33", 'Passwords do not match'); // 8
     cy.checkIsInvalid("signupRepeatPassword", "333qweRty333zzs", 'Passwords do not match'); // 15
 
-    cy.get('input[id="signupPassword"]').clear().type('333qweRty333zzz') // 15
+    cy.get('input[id="signupPassword"]').clear().type('333qweRty333zzz')
+    cy.get('input[id="signupRepeatPassword"]').clear().type('333qweRty333zzz') // 15
     cy.get('div[class="invalid-feedback"]').should('not.exist');
+  });
+
+});
+
+describe('Registration & LogIn', () => {
+
+  beforeEach(() => {
+    cy.visit('https://qauto.forstudy.space/', {
+      auth: {
+        username: 'guest',
+        password: 'welcome2qauto',
+      },
+    });
+  })
+
+
+  it('Valid Registration', () => {
+    cy.get('button[class^="hero-descriptor_btn"]').click();
+    cy.get('div[class="modal-content"]').should('be.visible');
+
+    // Статичні дані
+    let payload = {
+      name: 'qw',
+      lastName: 'qqqqqwwweeerrrtttyyy',
+      email: `email_${Date.now()}@markin.com`, // Динамічний email
+      password: '333qweRty333zzz',
+      repeatPassword: '333qweRty333zzz'
+    };
+
+    // Введення даних у форму
+    cy.get('input[id="signupName"]').clear().type(payload.name);
+    cy.get('input[id="signupLastName"]').clear().type(payload.lastName);
+    cy.get('input[id="signupEmail"]').clear().type(payload.email);
+    cy.get('input[id="signupPassword"]').clear().type(payload.password);
+    cy.get('input[id="signupRepeatPassword"]').clear().type(payload.repeatPassword);
+
+    cy.get('div[class="modal-footer"]')
+      .find('button[class*="btn-primary"]')
+      .click();
+
+    // Перевірка, що після реєстрації URL змінюється
+    cy.url().should('equal', 'https://qauto.forstudy.space/panel/garage');
+
+    // Збереження даних у глобальну змінну Cypress
+    Cypress.env('userData', {
+      email: payload.email,
+      password: payload.password
+    });
+
+    // Логаут
+    cy.get('a[class*="text-danger"]').click()
+  });
+
+  it('Login', () => {
+    // Отримання даних із глобального середовища
+    let payload = Cypress.env('userData');
+
+    // Авторизація з використанням збережених даних
+    cy.get('div[class^="header_right"]')
+      .find('button[class$="header_signin"]')
+      .click();
+
+    cy.get('div[class="modal-content"]').should('be.visible');
+
+    cy.get('input[id="signinEmail"]').type(payload.email);
+    cy.get('input[id="signinPassword"]').type(payload.password);
+
+    cy.get('div[class^="modal-footer"]')
+      .find('button[class$="btn-primary"]')
+      .click();
   });
 });
