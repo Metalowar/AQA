@@ -1,8 +1,8 @@
 describe("Different env for test", () => {
   beforeEach(() => {
-    const mainUrl = Cypress.config('apiUrl'); // Записати в конфіг
+    const mainUrl = Cypress.config('baseUrl'); // Записати в конфіг
 
-    cy.visit('BASE_URL_MAIN', { // https://qauto.forstudy.space/ or https://qauto2.forstudy.space/
+    cy.visit(`${mainUrl}`, { // https://qauto.forstudy.space/ or https://qauto2.forstudy.space/
       auth: {
         username: 'guest',
         password: 'welcome2qauto',
@@ -11,10 +11,10 @@ describe("Different env for test", () => {
   });
 
   it("Add car", () => {
-    cy.visit("https://jetbrains.com");
+    cy.get('button[class^="hero-descriptor_btn"]').click();
   });
 
-  it("Add fuel expenses", () => {
+  it.skip("Add fuel expenses", () => {
     cy.visit("https://jetbrains.com");
   });
 });

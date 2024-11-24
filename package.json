@@ -11,7 +11,9 @@
     "lint-fix": "npx eslint --fix",
     "lint-check": "npx eslint",
     "test:node-setup": "cross-env NODE_OPTIONS=\"$NODE_OPTIONS --experimental-vm-modules\" jest",
-    "test": "jest"
+    "test": "jest",
+    "cy:valid": "npx cypress open --env configFile=valid",
+    "cy:invalid": "npx cypress open --env configFile=invalid"
   },
   "keywords": [],
   "author": "",
