@@ -12,6 +12,13 @@ describe("Different env for test", () => {
 
   it("Add car", () => {
     cy.get('button[class^="hero-descriptor_btn"]').click();
+
+    //  Паролі:
+    // - invalidtest@mail.com
+    // - 333qweRty333zzz
+    //
+    // - validtest@mail.com
+    // - 333qweRty333zzz
   });
 
   it.skip("Add fuel expenses", () => {
