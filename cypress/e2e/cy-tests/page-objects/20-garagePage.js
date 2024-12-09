@@ -1,4 +1,4 @@
-class Garage {
+export class Garage {
   // Selectors:
 
   get addCarButton() {
@@ -22,7 +22,7 @@ class Garage {
   }
 
   get createCarButton() {
-    return cy.get('button[class$="btn-primary"]');
+    return cy.get('div[class^="modal-footer"]').find('button[class$="btn-primary"]');
   }
 
   get deleteCarButton() {
@@ -38,16 +38,18 @@ class Garage {
     this.addCarButton.click();
   }
 
-  brandSelect(carBrand) {
+  selectBrand(carBrand) {
     this.brandSelect.select(carBrand);
   }
 
-  modelSelect(carModel) {
+  selectModel(carModel) {
     this.modelSelect.select(carModel);
+    return this;
   }
 
   typeMilege(milege) {
-    this.inputMileage.type(milege);
+    this.inputMileage.type(milege)
+    return this;
   }
 
   clickConfirmCreate() {
@@ -67,4 +69,4 @@ class Garage {
   }
 }
 
-export default new Garage();
+// export default new Garage();

@@ -1,5 +1,9 @@
-class Fuel {
+export class Fuel {
   // Selectors:
+
+  get visitPage() {
+    return cy.get('nav[class^="sidebar"]').find('a[href="/panel/expenses"]')
+  }
 
   get addFuelButton() {
     return cy.get('div[class^="panel-page_heading"]').find('button[class$="btn-primary"]');
@@ -18,7 +22,7 @@ class Fuel {
   }
 
   get createFuelButton() {
-    return cy.get('button[class$="btn-primary"]');
+    return cy.get('div[class^="modal-footer"]').find('button[class$="btn-primary"]');
   }
 
   get deleteFuelButton() {
@@ -30,20 +34,28 @@ class Fuel {
   }
 
   //Actions:
-  clickAddCar() {
+
+  clickFuelPage() {
+    this.visitPage.click();
+  }
+
+  clickAddFuel() {
     this.addFuelButton.click();
   }
 
   typeNewMilege(newMilege) {
-    this.inputFuelMilege.type(newMilege);
+    this.inputFuelMilege.clear().type(newMilege);
+    return this;
   }
 
   typeLiters(liters) {
     this.inputFuelLiters.type(liters);
+    return this;
   }
 
-  typeMilege(price) {
+  typePrice(price) {
     this.inputFuelCost.type(price);
+    return this;
   }
 
   clickCreate() {
@@ -59,4 +71,4 @@ class Fuel {
   }
 }
 
-export default new Fuel();
+// export default new Fuel();
