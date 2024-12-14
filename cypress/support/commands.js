@@ -37,6 +37,23 @@ Cypress.Commands.add('invalidSubmit', () => {
     .find('button[class*="btn-primary"]')
     .should('have.attr', 'disabled')
 });
+
+
+Cypress.Commands.add('createExpences', (reqUrl, bodyRequest) => {
+  cy.request({
+    method: 'POST',
+    url: reqUrl,
+    body: bodyRequest // Передати саме об'єкт в змінній
+  }).then((response) => {
+    expect(response.status).to.equal(200);
+
+    const responseBody = response.body.data;
+
+    Object.keys(bodyRequest).forEach((key) => {
+      expect(responseBody[key]).to.equal(bodyRequest[key]);
+    });
+  });
+});
 //
 //
 // -- This is a child command --
