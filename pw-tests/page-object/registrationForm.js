@@ -15,24 +15,47 @@ export class RegistrationForm extends BasePage {
     passwordInput: this.page.locator('input[id="signupPassword"]'),
     rePasswordInput: this.page.locator('input[id="signupRepeatPassword"]'),
     invalidInput: this.page.locator('div[class="invalid-feedback"]'),
-    submitFormButton: this.page.locator('div[class="modal-footer"]', {has: this.page.locator('button[class*="btn-primary"]')})
+    submitFormButton: this.page.locator('div[class="modal-footer"]', {has: this.page.locator('button[class*="btn-primary"]')}),
   }
 
   async openForm() {
     await this.locators.signUpButton.click();
   }
 
-  async fillForm(name="", lastName="", email="", password="", rePassword="") {
-    await this.locators.nameInput.type(name);
-    await this.locators.lastNameInput.type(lastName);
-    await this.locators.emailInput.type(email);
-    await this.locators.passwordInput.type(password);
-    await this.locators.rePasswordInput.type(rePassword);
-    
+  async fillAllForm(name="", lastName="", email="", password="", rePassword="") {
+    await this.locators.nameInput.fill(name);
+    await this.locators.lastNameInput.fill(lastName);
+    await this.locators.emailInput.fill(email);
+    await this.locators.passwordInput.fill(password);
+    await this.locators.rePasswordInput.fill(rePassword);
+  }
+
+  async fillName(name='') {
+    await this.locators.nameInput.fill(name);
+  }
+
+  async fillLastName(lastName='') {
+    await this.locators.lastNameInput.fill(lastName);
+  }
+
+  async fillEmail(email='') {
+    await this.locators.emailInput.fill(email);
+  }
+
+  async fillPassword(password='') {
+    await this.locators.passwordInput.fill(password);
+  }
+
+  async fillRePassword(rePassword='') {
+    await this.locators.rePasswordInput.fill(rePassword);
+  }
+
+  async bluring(blurElement) {
+    await this.locators[blurElement].blur();
   }
 
   async checkIsInvalid(inputId) {
-    const inputLocator = this.locators(`#${inputId}`);
+    const inputLocator = this.locators[inputId];
     await expect(this.locators.invalidInput).toBeVisible();
     await expect(inputLocator).toHaveCSS('border-color', 'rgb(220, 53, 69)');
   }
