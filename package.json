@@ -15,7 +15,9 @@
     "cy:valid": "npx cypress open --env configFile=valid",
     "cy:invalid": "npx cypress open --env configFile=invalid",
     "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
-    "pw-start": "playwright test --headed --project=\"Google Chrome\""
+    "pw-start": "playwright test --headed --project=\"Google Chrome\"",
+    "pw-dev": "set BASE_URL=https://qauto2.forstudy.space && playwright test --headed --project=\"Google Chrome\"",
+    "pw-prod": "set BASE_URL=https://qauto.forstudy.space && playwright test --headed --project=\"Google Chrome\""
   },
   "keywords": [],
   "author": "",
@@ -42,6 +44,7 @@
   },
   "dependencies": {
     "axios": "^1.7.7",
+    "dotenv": "^16.4.7",
     "random-email": "^1.0.3"
   }
 }
