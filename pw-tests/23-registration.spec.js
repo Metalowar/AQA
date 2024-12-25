@@ -2,15 +2,16 @@ import { test, expect } from "@playwright/test";
 import { RegistrationForm} from "./page-object/registrationForm.js"
 
 test.describe("Registration form", async () => {
-  test.use({
-    contextOptions: {
-      httpCredentials: {
-        username: 'guest',
-        password: 'welcome2qauto',
-        send: 'always',
-      },
-    },
-  });
+  // test.use({
+  //   contextOptions: {
+  //     baseURL: process.env.BASE_URL,
+  //     httpCredentials: {
+  //       username: process.env.HTTP_CREDENTIALS_USERNAME,
+  //       password: process.env.HTTP_CREDENTIALS_PASSWORD,
+  //       send: 'always',
+  //     },
+  //   },
+  // });
 
 
   test("Invalid filling all form", async ({ page }) =>{

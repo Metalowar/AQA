@@ -1,5 +1,13 @@
 // @ts-check
 import { defineConfig, devices }  from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+// Працює, але не так, як потрібно (поки вирішити не можу)
+// dotenv.config({
+//   path: `.env.${process.env.ENV || 'prod'}`
+// });
 
 /**
  * Read environment variables from file.
@@ -26,6 +34,10 @@ export default defineConfig ({
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     baseURL: process.env.BASE_URL,
+    httpCredentials: {
+      username: process.env.HTTP_CREDENTIALS_USERNAME,
+      password: process.env.HTTP_CREDENTIALS_PASSWORD,
+    },
     actionTimeout: 50000,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
