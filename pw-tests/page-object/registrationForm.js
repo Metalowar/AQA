@@ -1,5 +1,6 @@
 import { BasePage } from "./basePage.js";
 import { expect } from "@playwright/test";
+import { GaragePage } from "./garagePage.js";
 
 export class RegistrationForm extends BasePage {
   constructor(page, context) {
@@ -16,6 +17,12 @@ export class RegistrationForm extends BasePage {
     rePasswordInput: this.page.locator('input[id="signupRepeatPassword"]'),
     invalidInput: this.page.locator('div[class="invalid-feedback"]'),
     submitFormButton: this.page.locator('div[class="modal-footer"]', {has: this.page.locator('button[class*="btn-primary"]')}),
+
+    //Авторизація
+    loginFormButton: this.page.locator('div[class^="header_right"]', {has: this.page.locator('button[class$="header_signin"]')}),
+    loginInput: this.page.locator('input[id="signinEmail"]'),
+    userPasswordInput: this.page.locator('input[id="signinPassword"]'),
+    loginButton: this.page.locator('div[class^="modal-footer"]', {has: this.page.locator('button[class$="btn-primary"]')})
   }
 
   async openForm() {
@@ -67,5 +74,14 @@ export class RegistrationForm extends BasePage {
 
   async submitForm() {
     await this.locators.submitFormButton.click();
+  }
+
+  // Авторизація
+  async userAuth(email, password){
+    await this.locators.loginFormButton.click();
+    await this.locators.loginInput.fill(email);
+    await this.locators.userPasswordInput.fill(password);
+    await this.locators.loginButton.click();
+    return new GaragePage(this.page, this.context);
   }
 }
