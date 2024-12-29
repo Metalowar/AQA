@@ -80,8 +80,8 @@ export default defineConfig ({
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'],
-      channel: 'chrome',
-      storageState: 'lesson_27/auth.json'
+        channel: 'chrome',
+        storageState: 'lesson_27/auth.json'
       },
       dependencies: ['setup'],
     },
