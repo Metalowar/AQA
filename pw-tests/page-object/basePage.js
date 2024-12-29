@@ -5,4 +5,8 @@ export class BasePage {
     this.page = page;
     this.context = context;
   }
+
+  async visitPage() {
+    await this.page.goto(this.url);
+  }
 }

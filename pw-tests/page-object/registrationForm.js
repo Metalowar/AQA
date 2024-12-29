@@ -1,6 +1,5 @@
 import { BasePage } from "./basePage.js";
 import { expect } from "@playwright/test";
-import { GaragePage } from "./garagePage.js";
 
 export class RegistrationForm extends BasePage {
   constructor(page, context) {
@@ -19,10 +18,10 @@ export class RegistrationForm extends BasePage {
     submitFormButton: this.page.locator('div[class="modal-footer"]', {has: this.page.locator('button[class*="btn-primary"]')}),
 
     //Авторизація
-    loginFormButton: this.page.locator('div[class^="header_right"]', {has: this.page.locator('button[class$="header_signin"]')}),
+    loginFormButton: this.page.locator('button[class*="btn-outline-white"]'),
     loginInput: this.page.locator('input[id="signinEmail"]'),
     userPasswordInput: this.page.locator('input[id="signinPassword"]'),
-    loginButton: this.page.locator('div[class^="modal-footer"]', {has: this.page.locator('button[class$="btn-primary"]')})
+    loginButton: this.page.locator('button[class="btn btn-primary"]')
   }
 
   async openForm() {
@@ -77,11 +76,20 @@ export class RegistrationForm extends BasePage {
   }
 
   // Авторизація
-  async userAuth(email, password){
+  async userAuth(email, password) {
     await this.locators.loginFormButton.click();
     await this.locators.loginInput.fill(email);
     await this.locators.userPasswordInput.fill(password);
     await this.locators.loginButton.click();
-    return new GaragePage(this.page, this.context);
+
+    // Очікуємо, що з'явиться елемент сторінки гаража після логіну
+    const garageLoaded = await this.page.waitForSelector('selector-of-garage-page-element', {
+      timeout: 10000,
+    });
+
+    if (!garageLoaded) {
+      throw new Error("Login failed: Garage page did not load.");
+    }
+    //return new GaragePage(this.page, this.context);
   }
 }

@@ -3,16 +3,15 @@ import { BasePage } from "./basePage.js";
 export class GaragePage extends BasePage {
   constructor(page, context) {
     super(page, context)
-    this.url = 'panel/garage'
   }
 
   locators = {
-    addCarButton: this.page.locator('div[class^="panel-page_heading"]', {has: this.page.locator('button[class$="btn-primary"]')}),
+    addCarButton: this.page.getByRole('button', { name: 'Add car' }),
     editCarButton: this.page.locator('button[class^="car_edit"]'),
     brandSelect: this.page.locator('select[id="addCarBrand"]'),
     modelSelect: this.page.locator('select[id="addCarModel"]'),
     inputMileage: this.page.locator('input[id="addCarMileage"]'),
-    createCarButton: this.page.locator('div[class^="modal-footer"]', {has: this.page.locator('button[class$="btn-primary"]')}),
+    createCarButton: this.page.getByRole('button', { name: 'Add' }),
     deleteCarButton: this.page.locator('button[class$="btn-outline-danger"]'),
     confirmDelCarButton: this.page.locator('button[class$="btn-danger"]')
   }
@@ -26,7 +25,7 @@ export class GaragePage extends BasePage {
   }
 
   async selectModel(carModel='') {
-    await this.locators.brandSelect.selectOption(carModel);
+    await this.locators.modelSelect.selectOption(carModel);
   }
 
   async typeMilege(milege='') {

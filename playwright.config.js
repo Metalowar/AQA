@@ -76,9 +76,14 @@ export default defineConfig ({
     //   name: 'Microsoft Edge',
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
+    { name: 'setup', testMatch: ['**/login.setup.js'] },
     {
       name: 'Google Chrome',
-      use: { ...devices['Desktop Chrome'], channel: 'chrome' },
+      use: { ...devices['Desktop Chrome'],
+      channel: 'chrome',
+      storageState: 'lesson_27/auth.json'
+      },
+      dependencies: ['setup'],
     },
   ],
 
