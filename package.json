@@ -16,6 +16,7 @@
     "cy:invalid": "npx cypress open --env configFile=invalid",
     "report": "cypress run --reporter cypress-multi-reporters --reporter-options configFile=reporter-config.json",
     "pw-start": "playwright test --headed --project=\"Google Chrome\"",
+    "pw-last-test": "playwright test pw-tests/27-carsStorage.spec.js --headed --project=\"Google Chrome\"",
     "pw-dev": "set ENV=dev && playwright test --headed --project=\"Google Chrome\"",
     "pw-prod": "set ENV=prod && playwright test --headed --project=\"Google Chrome\""
   },
