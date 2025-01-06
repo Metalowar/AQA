@@ -45,6 +45,6 @@ export default [
     }
   },
   {
-    ignores: ["lesson_10/**", "cypress/**", "cypress.config.js", "mochawesome-report/**"]
+    ignores: ["lesson_10/**", "cypress/**", "cypress.config.js", "mochawesome-report/**", "lesson_27/**", "pw-tests/**"]
   }
 ];
