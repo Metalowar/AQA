@@ -77,6 +77,7 @@ export default defineConfig ({
     //   use: { ...devices['Desktop Edge'], channel: 'msedge' },
     // },
     { name: 'setup', testMatch: ['**/login.setup.js'] },
+    { name: 'setupBody', testMatch: ['**/login.setup.js'] },
     {
       name: 'Google Chrome',
       use: { ...devices['Desktop Chrome'],
@@ -84,6 +85,15 @@ export default defineConfig ({
         storageState: 'lesson_27/auth.json'
       },
       dependencies: ['setup'],
+    },
+
+    {
+      name: 'Google ChromeAPI',
+      use: { ...devices['Desktop Chrome'],
+        channel: 'chrome',
+        storageState: 'lesson_28/body.json'
+      },
+      dependencies: ['setupBody'],
     },
   ],
 
